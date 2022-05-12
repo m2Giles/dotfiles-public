@@ -1,0 +1,5 @@
+cmd xdg-open
+depth 0
+exclude GoogleDrive
+no-descend
+dir /home/m2

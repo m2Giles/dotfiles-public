@@ -1,0 +1,68 @@
+# Reload sxhkd
+alt + control + s
+    pkill --signal=SIGUSR1 sxhkd; notify-send "Reloaded sxhkd"
+
+# Reload dunst
+alt + control + d
+    systemctl --user restart dunst.service; notify-send "Reloaded Dunst"
+
+# Kill dunst
+alt + control + shift d;
+    pkill dunst
+
+# Media Controls
+XF86AudioPlay
+	playerctl play-pause
+
+XF86AudioPrev
+    playerctl previous
+
+XF86AudioNext
+    playerctl next
+
+# Volume Control
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +5%; notify-send "Volume: $(printf '%.0f' $(pulsemixer --get-volume | cut -c1-2))%"
+
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -5%; notify-send "Volume: $(printf '%.0f' $(pulsemixer --get-volume | cut -c1-2))%"
+
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle; notify-send "Sink $(pactl get-sink-mute @DEFAULT_SINK@)"
+
+alt + XF86AudioMute
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle; notify-send "Source $(pactl get-source-mute @DEFAULT_SOURCE@)" "Check Hardware Switch"
+
+XF86AudioMedia
+    st -e pulsemixer
+
+# Monitor Brightness
+XF86MonBrightnessDown
+    xbacklight -dec 5; notify-send "Backlight is $(printf '%.0f' $(xbacklight -get))%"
+
+XF86MonBrightnessUp
+    xbacklight -inc 5; notify-send "Backlight is $(printf '%.0f' $(xbacklight -get))%"
+
+# Emoji Picker
+alt + grave
+    ~/.local/bin/dmenuunicode
+
+# Print Screen
+Print
+  maim $HOME/Pictures/Screenshots/$(date +%Y%m%d-%H%M-%S).png; notify-send "Print Screen Taken"
+
+shift + Print
+  maimpick
+
+# Default Applications
+alt + {b,m}
+  {google-chrome-stable, st -e spt}
+
+alt + {_,shift} + v
+  {st -e lfub, rofi-lf-picker}
+
+alt + {slash,s,Escape,u,r}
+  {rofi -show drun,rofi -show ssh,rofi -show power-menu -modi power-menu:~/.local/bin/rofi-power-menu,rofi-usb,rofi-launcher}
+
+# alt + shift + m
+#   rofi -show calc -modi calc -no-show-match -no-sort -no-persist-history

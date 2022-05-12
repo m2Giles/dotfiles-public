@@ -1,0 +1,9 @@
+[Unit]
+Description=Pull Garmin Calendar
+
+[Service]
+Type=simple
+ExecStart=/home/m2/.local/bin/garmin-calendar-pull
+
+[Install]
+WantedBy=default.target

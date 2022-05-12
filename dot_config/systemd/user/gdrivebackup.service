@@ -1,0 +1,9 @@
+[Unit]
+Description=Pull Garmin Calendar
+
+[Service]
+Type=simple
+ExecStart=/home/m2/.local/bin/gdrivebackup
+
+[Install]
+WantedBy=default.target

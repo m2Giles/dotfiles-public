@@ -1,0 +1,9 @@
+[Unit]
+Description=Pull Garmin Calendar Weekly Timer
+
+[Timer]
+OnCalendar=Daily
+Persistent=true
+
+[Install]
+WantedBy=default.target

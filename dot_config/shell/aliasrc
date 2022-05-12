@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# # Use neovim for vim if present.
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+alias \
+	  ls="exa --icons --group-directories-first" \
+	  grep="grep --color=auto" \
+    la="ls -a --long --header --git --group --inode" \
+    ll="ls --long --header --git --group --inode" \
+    cp="cp -iv" \
+    mv="mv -iv" \
+    rm="rm -vI" \
+    cat="bat" \
+    lf="lfcd" \
+    mpv-pl="mpv --playlist=playlist.txt" \
+    drive="lfcd /run/media/$USER" \
+
+alias \
+    suspend="systemctl suspend-then-hibernate" \
+    hibernate="systemctl hibernate" \
+
+#    spt="systemctl --user restart spotifyd.service; /usr/bin/spt" \

@@ -1,0 +1,170 @@
+icons = "awesome"
+
+[theme]
+name = "gruvbox-dark"
+[theme.overrides]
+info_fg = "#282828"
+good_fg = "#282828"
+warning_fg = "#282828"
+
+[[block]]
+block = "pacman"
+interval = 600
+format = "{pacman} 🎁"
+format_singular = "{pacman} 🎁"
+format_up_to_date = "{pacman} 🎁"
+critical_updates_regex = "(linux)"
+on_click = "fakeroot pacman -Qu --dbpath /tmp/checkup-db-m2/ | dmenu"
+[block.icons_overrides]
+update = "\uf303"
+
+[[block]]
+block = "pacman"
+interval = 600
+format = "{aur} 📦"
+format_singular = "{aur} 📦"
+format_up_to_date = "{aur} 📦"
+critical_updates_regex = "(google|brave)"
+aur_command = "paru -Qua"
+on_click = "paru -Qua | dmenu"
+[block.icons_overrides]
+update = "\uf303"
+
+[[block]]
+block = "music"
+marquee_interval = 2
+marquee_speed = 0.2
+on_click = "st -e /usr/bin/spt"
+on_collapsed_click = "st -e /usr/bin/spt"
+[block.theme_overrides]
+info_fg = "#ebdbb2"
+info_bg = "#282828"
+idle_bg = "#458588"
+idle_fg = "#282828"
+[block.icons_overrides]
+music = '🎶'
+
+[[block]]
+block = "networkmanager"
+on_click = "st -e nmtui"
+interface_name_exclude = ["vir**","vnet**","lxc**","lxd**"]
+device_format = "{icon} {ap}"
+ap_format = "{strength}"
+[block.theme_overrides]
+# good_bg = "#83a598"
+good_fg = "#282828"
+[block.icons_overrides]
+net_wireless = "📶"
+
+# [[block]]
+# block = "bluetooth"
+# mac = "94:DB:56:00:FE:DC"
+# format = "{label} \uf025"
+# [block.theme_overrides]
+# good_fg = "#282828"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used_percents:3;1}"
+format_swap = "{swap_used_percents:3;1}"
+# [block.theme_overrides]
+# idle_bg = "#458588"
+# idle_fg = "#282828"
+[block.icons_overrides]
+memory_mem = "🧠"
+memory_swap = "💿"
+
+[[block]]
+block = "cpu"
+on_click = "st -e htop"
+# [block.theme_overrides]
+# idle_bg = "#458588"
+# idle_fg = "#282828"
+[block.icons_overrides]
+cpu = "🫀"
+
+
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "available"
+unit = "GB"
+format = "{icon} {available}"
+[block.icons_overrides]
+disk_drive = "💾"
+
+
+[[block]]
+block = "sound"
+device_kind = "sink"
+on_click = "st -e pulsemixer"
+format = "{volume:02^02}"
+headphones_indicator = true
+[block.icons_overrides]
+volume_muted = "🔇"
+volume_empty = "🔈"
+volume_half = "🔉"
+volume_full = "🔊"
+headphones = "🎧"
+
+[[block]]
+block = "sound"
+device_kind = "source"
+on_click = "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+format = "{volume^02}"
+[block.icons_overrides]
+microphone_empty = "🎙️"
+microphone_half = "🎙️"
+microphone_full = "🎙️"
+
+[[block]]
+block = "backlight"
+cycle = [100, 75, 50 , 25, 5, 25, 50, 75]
+invert_icons = true
+
+[[block]]
+block = "custom"
+cycle = ["xset s 600 120; xset +dpms; echo '{\"state\":\"Idle\",\"text\":\"🌙\"}'","xset s 0 0; xset -dpms; echo '{\"state\":\"Warning\",\"text\":\"☀️\"}'"]
+interval = "once"
+json = true
+
+[[block]]
+block = "battery"
+driver = "upower"
+format = "{percentage} {time}"
+[block.theme_overrides]
+good_fg = "#282828"
+idle_fg = "#282828"
+[block.icons_overrides]
+bat_charging = "🔌"
+
+# [[block]]
+# block = "xrandr"
+# on_click = "arandr"
+# interval = 120
+# format = "{display} {res_icon}{resolution}"
+# icons = true
+# resolution = true
+
+[[block]]
+on_click = "st -e calcurse"
+block = "time"
+interval = 5
+format = "%a %d %b %y"
+[block.icons_overrides]
+time = "📅"
+[block.theme_overrides]
+idle_bg = "#282828"
+idle_fg = "#ebdbb2"
+
+[[block]]
+on_click = "st -e clocktest"
+block = "time"
+interval = 5
+format = "%R"
+[block.icons_overrides]
+time = "🕓"
+[block.theme_overrides]
+idle_bg = "#282828"
+idle_fg = "#ebdbb2"
