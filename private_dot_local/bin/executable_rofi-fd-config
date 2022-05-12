@@ -1,0 +1,7 @@
+#!/bin/sh
+
+chosen=$(fd . '/home/m2/.config' -H | dmenu -i -l 10 -p "Config Files")
+
+[ -z "$chosen" ] && exit
+
+mimeopen $chosen

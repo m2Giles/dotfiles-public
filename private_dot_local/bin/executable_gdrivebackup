@@ -1,0 +1,3 @@
+#!/bin/sh
+
+rclone copy /home/m2/GradSchool/local/ GoogleDrive:/GradSchool/Framework

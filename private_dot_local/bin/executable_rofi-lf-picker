@@ -1,0 +1,11 @@
+#!/bin/sh
+
+case "$(printf "1. Bookmarks\\n2. LF\\n3. File Browse Rofi\\n4. Config Files\\n5. etc\\n6. usr\\nExit" | dmenu -i -l 7 -p "Which Option?")" in
+  "1. Bookmarks") cat $LF_BOOKMARK_PATH/$(ls $LF_BOOKMARK_PATH | dmenu -i -p "Bookmarks") | xargs mimeopen ;;
+	"2. LF") mimeopen $HOME ;;
+	"3. File Browse Rofi") rofi -show file-browser-extended ;;
+  "4. Config Files")  echo $XDG_CONFIG_HOME/$(ls $XDG_CONFIG_HOME | dmenu -i -p "Config Files") | xargs mimeopen ;;
+  "5. etc") mimeopen /etc  ;;
+  "6. usr") mimeopen /usr ;;
+  "Exit") exit ;;
+esac

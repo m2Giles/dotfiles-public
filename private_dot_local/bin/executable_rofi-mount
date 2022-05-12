@@ -1,0 +1,7 @@
+#!/bin/sh
+
+chosen=$(ls /dev/sd?? | dmenu -i -p "Which Drive")
+
+[ -z "$chosen" ] && exit
+
+udiskie-mount $chosen

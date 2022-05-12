@@ -1,0 +1,15 @@
+#!/bin/sh
+
+case "$(printf "1. Calculator\\n2. BlueTooth\\n3. WiFi\\n4. Power\\n5. USB Drives\\n6. LF-Launcher\\n7. File Browse\\n8. Config Files\\n9. SSH\\n10. Calendar\\nExit" | dmenu -i -l 10 -p "Which menu?")" in
+  "1. Calculator") rofi -show calc -modi calc -no-show-match -no-sort -no-persist-history ;;
+	"2. BlueTooth") rofi-bluetooth ;;
+	"3. WiFi") rofi-wifi-menu ;;
+	"4. Power") rofi -show power-menu:$HOME/.local/bin/rofi-power-menu ;;
+	"5. USB Drives") rofi-usb ;;
+	"6. LF-Launcher") rofi-lf-picker ;;
+	"7. File Browse") rofi -show file-browser-extended ;;
+  "8. Config Files") rofi-fd-config ;;
+  "9. SSH") rofi -show ssh ;;
+  "10. Calendar") st -e calcurse ;;
+  "Exit") exit ;;
+esac

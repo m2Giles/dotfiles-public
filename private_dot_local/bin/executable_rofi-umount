@@ -1,0 +1,7 @@
+#!/bin/sh
+
+chosen=$(ls /run/media/$USER | dmenu -i -p "Which Drive")
+
+[ -z "$chosen" ] && exit
+
+udiskie-umount /run/media/$USER/$chosen

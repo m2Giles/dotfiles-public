@@ -1,0 +1,4 @@
+#!/bin/sh
+
+curl -o /home/m2/.local/share/calcurse/garmin-calendar.ics "https://connect.garmin.com/modern/calendar/export/c12b027231fa4d638849983232d38311"
+calcurse -i /home/m2/.local/share/calcurse/garmin-calendar.ics
